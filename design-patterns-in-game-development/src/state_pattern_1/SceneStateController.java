@@ -1,10 +1,14 @@
 package state_pattern_1;
 
+/**
+ * 场景状态控制者
+ */
 public class SceneStateController {
+	/** 用来代表当前游戏状态 */
 	private ISceneState m_state;
 	private boolean m_bRunBegin = false;
 
-	private SceneStateController() {
+	public SceneStateController() {
 		super();
 	}
 
@@ -23,22 +27,22 @@ public class SceneStateController {
 	}
 
 	public void stateUpdate() {
-		if(!isLoadIn()){
+		if (!isLoadIn()) {
 			return;
 		}
-		
+
 		// 通知新的state开始
-		if(m_state != null && m_bRunBegin == false){
+		if (m_state != null && m_bRunBegin == false) {
 			m_state.stateBegin();
 			m_bRunBegin = true;
 		}
-		
-		if(m_state != null){
+
+		if (m_state != null) {
 			m_state.stateUpdate();
 		}
 	}
-	
-	public boolean isLoadIn(){
+
+	public boolean isLoadIn() {
 		// TODO 判断是否加载完成
 		return false;
 	}
